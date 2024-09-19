@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>
+      {% block title %}
+        - The Lime Site
+      {% endblock %}
+    </title>
+  </head>
+
+  <body>
+    <header>
+      <h1>The Lime</h1>
+    </header>
+    {% include 'navbar.html' %}
+    <main>
+      {% block content %}
+
+      {% endblock %}
+    </main>
+
+    <footer>
+      <p>Lime Site Footer</p>
+    </footer>
+  </body>
+</html>
