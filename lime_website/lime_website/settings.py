@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "lime_website.apps.accounts",
 ]
 
 MIDDLEWARE = [
@@ -123,6 +124,6 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-LOGIN_URL = "login"
-LOGIN_REDIRECT_URL = "index"
-LOGOUT_REDIRECT_URL = "index"
+LOGIN_URL = "accounts:login"
+LOGIN_REDIRECT_URL = "public:index"
+LOGOUT_REDIRECT_URL = "public:index"

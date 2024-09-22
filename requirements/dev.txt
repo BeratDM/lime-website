@@ -1,3 +1,4 @@
 # Everything the development needs in addition to the production requirements
 -r prod.txt
 
+mypy
