@@ -1,11 +1,21 @@
 x-service-volumes: &service-volumes
   - ./:/app/:rw,cached
 
+x-database-variables: &database-variables
+  POSTGRES_DB: postgresdb
+  POSTGRES_USER: postgresuser
+  POSTGRES_PASSWORD: postgrespw
+
+x-app-variables: &app-variables
+  <<: *database-variables
+  POSTGRES_HOST: postgres
+
 services:
   website:
     image: lime-website:latest
     command: python ./lime_website/manage.py runserver 0.0.0.0:8000
     volumes: *service-volumes
+    environment: *app-variables
     depends_on:
       - db_migrate
     ports:
@@ -15,3 +25,16 @@ services:
     image: lime-website:latest
     command: python ./lime_website/manage.py migrate
     volumes: *service-volumes
+    environment: *app-variables
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment: *database-variables
+    volumes:
+      - db-data:/var/lib/postgresql/data
+volumes:
+  db-data:

@@ -3,6 +3,17 @@ FROM python:3.9-slim AS production
 ENV PYTHONUNBUFFERED=1
 WORKDIR /app/
 
+RUN apt-get update && \
+    apt-get install -y \
+    bash \
+    build-essential \
+    gcc \
+    libffi-dev \
+    musl-dev \
+    openssl \
+    postgresql \
+    libpq-dev 
+
 COPY requirements/prod.txt ./requirements/prod.txt
 RUN pip install -r ./requirements/prod.txt
 
