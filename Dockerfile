@@ -18,7 +18,7 @@ COPY requirements/prod.txt ./requirements/prod.txt
 RUN pip install -r ./requirements/prod.txt
 
 COPY lime_website/manage.py ./lime_website/manage.py
-COPY lime_website/setup.cfg ./lime_website/setup.cfg
+# COPY lime_website/setup.cfg ./lime_website/setup.cfg
 COPY lime_website/lime_website ./lime_website/lime_website
 
 EXPOSE 8000
