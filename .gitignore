@@ -3,3 +3,5 @@ __pycache__
 db.sqlite3
 .mypy_cache
 setup.cfg
+.env
+.vscode

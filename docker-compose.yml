@@ -2,9 +2,9 @@ x-service-volumes: &service-volumes
   - ./:/app/:rw,cached
 
 x-database-variables: &database-variables
-  POSTGRES_DB: postgresdb
-  POSTGRES_USER: postgresuser
-  POSTGRES_PASSWORD: postgrespw
+  POSTGRES_DB: ${POSTGRES_DB}
+  POSTGRES_USER: ${POSTGRES_USER}
+  POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 
 x-app-variables: &app-variables
   <<: *database-variables

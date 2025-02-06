@@ -12,3 +12,7 @@ def about(request: HttpRequest) -> HttpResponse:
 
 def contact(request: HttpRequest) -> HttpResponse:
     return render(request, "contact.html")
+
+
+def gamedev(request: HttpRequest) -> HttpResponse:
+    return render(request, "gamedevportfolio.html")

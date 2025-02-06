@@ -1,5 +1,5 @@
 <!-- Navigation -->
-<!--                                     
+<!--                                                    
 <a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
 <nav id="sidebar-wrapper">
   <ul class="sidebar-nav">
@@ -23,7 +23,7 @@
     </li>
   </ul>
 </nav>
-                                     -->
+                                                    -->
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -42,6 +42,10 @@
         {% url 'public:contact' as contact_url %}
         <a class="nav-link" href="{{ contact_url }}">Contact</a>
       </li>
+      <li class="nav-item">
+        {% url 'public:gamedev' as gamedev_url %}
+        <a class="nav-link" href="{{ gamedev_url }}">Game Development Portfolio</a>
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown08" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
         <div class="dropdown-menu" aria-labelledby="dropdown08">
@@ -51,7 +55,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <span style="margin-left: 76px;"></span>
+        <span style="margin-left: 76px"></span>
       </li>
 
       {% if user.is_authenticated %}
@@ -105,7 +109,7 @@
     {% endif %}
   </span>
 
-  <span style="float:right">
+  <span style="float: right">
     {% if user.is_authenticated %}
       {% url 'accounts:profile' as profile_url %}
       <span>
