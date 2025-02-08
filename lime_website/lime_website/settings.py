@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "lime_website.apps.accounts",
+    "lime_website.apps.portfolio",
 ]
 
 MIDDLEWARE = [

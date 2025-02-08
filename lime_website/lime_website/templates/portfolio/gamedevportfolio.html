@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}
+  Game Development Portfolio
+{% endblock %}
+{% block content %}
+  <div class="container-fluid portfolio-limits">
+    <div class="row">
+      <!-- Toggle Button for Small Screens -->
+      <button class="btn btn-outline-dark d-md-none my-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar-nav">☰ Contents</button>
+
+      <!-- Sidebar -->
+      <nav id="sidebar-nav" class="col-md-3 col-lg-2 d-md-block position-fixed offcanvas-md offcanvas-start navbar" data-bs-scroll="true">
+        <div class="offcanvas-header d-md-none">
+          <h5 class="offcanvas-title">Contents</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="position-sticky p-3 offcanvas-body">
+          <ul class="nav flex-column">
+            <a class="navbar-brand d-sm-none d-md-block" href="#">Contents</a>
+            {% for section in sections %}
+              <li class="nav-item">
+                <a class="nav-link" href="#{{ section.slug }}">{{ section.title }}</a>
+              </li>
+              {% for content in section.contents.all %}
+                <li class="nav-item">
+                  <a class="nav-link ml-3 my-1" href="#{{ section.slug }}-{{ content.slug }}">{{ content.title }}</a>
+                </li>
+              {% endfor %}
+            {% endfor %}
+          </ul>
+        </div>
+      </nav>
+      <!-- Main Content -->
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-5 portfolio-content-div">
+        {% for section in sections %}
+          <section id="{{ section.slug }}">
+            <h2>{{ section.title }}</h2>
+            <p>{{ section.description|safe }}</p>
+
+            {% for content in section.contents.all %}
+              <section id="{{ section.slug }}-{{ content.slug }}">
+                <h4>{{ content.title }}</h4>
+                <div style="word-wrap: break-word">{{ content.text|safe }}</div>
+              </section>
+            {% endfor %}
+          </section>
+        {% endfor %}
+      </main>
+    </div>
+  </div>
+
+  <script src="{% static 'js/sidebar_funcs.js' %}"></script>
+{% endblock %}

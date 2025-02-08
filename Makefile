@@ -3,7 +3,6 @@ build-dev:
 
 build-prod:
 	make build-dev options="--target production"
-	# $(MAKE) build-dev options="--target production"
 
 compose-start:
 	docker-compose up --remove-orphans $(options)

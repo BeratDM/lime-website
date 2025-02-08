@@ -24,4 +24,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("lime_website.apps.public.urls")),
     path("accounts/", include("lime_website.apps.accounts.urls")),
+    path("gamedev/", include("lime_website.apps.portfolio.urls")),
 ]
