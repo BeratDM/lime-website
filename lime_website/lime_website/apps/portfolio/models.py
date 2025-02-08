@@ -41,8 +41,12 @@ def clean_html(html):
 
 class Section(models.Model):
     title = models.CharField(max_length=255)
-    slug = models.SlugField(unique=True)  # Used for HTML IDs
+    slug = models.SlugField(unique=True)
     description = models.TextField(blank=True, null=True)
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["order"]
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -63,6 +67,10 @@ class Content(models.Model):
     slug = models.SlugField(unique=True)
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ["order"]
 
     def save(self, *args, **kwargs):
         if not self.slug:

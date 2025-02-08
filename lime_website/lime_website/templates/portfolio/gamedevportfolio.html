@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load static %}
+
 {% block title %}
   Game Development Portfolio
 {% endblock %}
@@ -19,11 +21,11 @@
             <a class="navbar-brand d-sm-none d-md-block" href="#">Contents</a>
             {% for section in sections %}
               <li class="nav-item">
-                <a class="nav-link" href="#{{ section.slug }}">{{ section.title }}</a>
+                <a class="nav-link nav-parent" href="#{{ section.slug }}">{{ section.title }}</a>
               </li>
               {% for content in section.contents.all %}
                 <li class="nav-item">
-                  <a class="nav-link ml-3 my-1" href="#{{ section.slug }}-{{ content.slug }}">{{ content.title }}</a>
+                  <a class="nav-link ml-3 my-1 nav-child1" href="#{{ section.slug }}-{{ content.slug }}">{{ content.title }}</a>
                 </li>
               {% endfor %}
             {% endfor %}
@@ -32,12 +34,12 @@
       </nav>
       <!-- Main Content -->
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-5 portfolio-content-div">
-        {% for section in sections %}
+        {% for section in sections|dictsort:'order' %}
           <section id="{{ section.slug }}">
             <h2>{{ section.title }}</h2>
             <p>{{ section.description|safe }}</p>
 
-            {% for content in section.contents.all %}
+            {% for content in section.contents.all|dictsort:'order' %}
               <section id="{{ section.slug }}-{{ content.slug }}">
                 <h4>{{ content.title }}</h4>
                 <div style="word-wrap: break-word">{{ content.text|safe }}</div>

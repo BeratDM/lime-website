@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Sidebar acting lowkey weird fix (scrolls back up after close, adds delay, closes upon section selection)
-
 document.addEventListener("DOMContentLoaded", function () {
   const sidebar = document.getElementById("sidebar-nav");
   const navLinks = sidebar.querySelectorAll(".nav-link");
@@ -71,11 +70,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
   observer.observe(sidebar, { attributes: true });
 });
+
+// Sidebar active section logic
 document.addEventListener("DOMContentLoaded", function () {
   var sections = document.querySelectorAll("main section");
   var navLinks = document.querySelectorAll("#sidebar-nav .nav-link");
 
-  // Detect parent-child relationships dynamically
+  // Detect parent-child relationships
   let sectionHierarchy = {};
   sections.forEach((section) => {
     let id = section.getAttribute("id");
@@ -103,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Update sidebar links
       navLinks.forEach((link) => {
-        let linkHref = link.getAttribute("href").substring(1); // Remove #
+        let linkHref = link.getAttribute("href").substring(1);
         if (activeSections.has(linkHref)) {
           link.classList.add("active");
         } else {
