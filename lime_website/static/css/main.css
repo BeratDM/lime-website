@@ -8,3 +8,7 @@ body {
   background-color: rgba(0, 123, 255, 0.1) !important;
   border-left: 4px solid #007bff !important;
 }
+
+.portfolio-limits {
+  max-width: 1300px;
+}
