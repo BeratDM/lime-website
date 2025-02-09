@@ -47,7 +47,18 @@ body {
   }
 }
 
-iframe {
-  aspect-ratio: 16 / 9;
+.responsive-iframe-container {
+  position: relative;
+  padding-bottom: 56.25%; /*(video height / video width) * 100% */
+  height: 0;
+  overflow: hidden;
+}
+
+.responsive-iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  border: none; /* Important: Remove any default borders */
 }
