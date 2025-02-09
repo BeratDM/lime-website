@@ -1,7 +1,8 @@
 from django.db import models
 from django.utils.text import slugify
 import bleach
-from lxml import html
+from lxml import html as lxml_html
+import html
 
 ALLOWED_TAGS = [
     "p",
@@ -55,17 +56,20 @@ def clean_html(html_content):
     cleaned_html = bleach.clean(
         html_content, tags=ALLOWED_TAGS, attributes=ALLOWED_ATTRIBUTES, strip=True
     )
-
-    # Parse the cleaned HTML with lxml to modify iframe attributes
-    tree = html.fragment_fromstring(cleaned_html, create_parent="div")
+    cleaned_html = html.unescape(cleaned_html)
+    tree = lxml_html.fromstring(f"<div>{cleaned_html}</div>")
 
     # Iterate over all <iframe> elements and enforce 'sandbox'
     for iframe in tree.findall(".//iframe"):
         if "sandbox" not in iframe.attrib:
             iframe.attrib["sandbox"] = DEFAULT_SANDBOX  # Apply default sandbox policy
+    cleaned_html = lxml_html.tostring(tree, encoding="unicode", method="html")
 
-    # Convert the modified tree back to a string
-    return html.tostring(tree, encoding="unicode", method="html")
+    fixed_html = cleaned_html.replace("<div><div>", "<div>").replace(
+        "</div></div>", "</div>"
+    )
+
+    return fixed_html
 
 
 class Section(models.Model):
