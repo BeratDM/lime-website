@@ -1,50 +1,25 @@
-<!-- Navigation -->
-{% comment %}
-<a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
-<nav id="sidebar-wrapper">
-  <ul class="sidebar-nav">
-    <li class="sidebar-brand">
-      <a href="#page-top">Start Bootstrap</a>
-    </li>
-    <li class="sidebar-nav-item">
-      <a href="#page-top">Home</a>
-    </li>
-    <li class="sidebar-nav-item">
-      <a href="#about">About</a>
-    </li>
-    <li class="sidebar-nav-item">
-      <a href="#services">Services</a>
-    </li>
-    <li class="sidebar-nav-item">
-      <a href="#portfolio">Portfolio</a>
-    </li>
-    <li class="sidebar-nav-item">
-      <a href="#contact">Contact</a>
-    </li>
-  </ul>
-</nav>
-{% endcomment %}
+{% url 'public:index' as index_url %}
+{% url 'public:about' as about_url %}
+{% url 'public:contact' as contact_url %}
+{% url 'portfolio:gamedev' as gamedev_url %}
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark main-nav">
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
   <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        {% url 'public:index' as index_url %}
-        <a class="nav-link" href="{{ index_url }}">Home <span class="sr-only">(current)</span></a>
+      <li class="nav-item">
+        <a class="nav-link nav-link-cstm" href="{{ index_url }}">Home</a>
       </li>
       <li class="nav-item">
-        {% url 'public:about' as about_url %}
-        <a class="nav-link" href="{{ about_url }}">About</a>
+        <a class="nav-link nav-link-cstm" href="{{ about_url }}">About</a>
       </li>
       <li class="nav-item">
-        {% url 'public:contact' as contact_url %}
-        <a class="nav-link" href="{{ contact_url }}">Contact</a>
+        <a class="nav-link nav-link-cstm" href="{{ contact_url }}">Contact</a>
       </li>
       <li class="nav-item">
-        {% url 'portfolio:gamedev' as gamedev_url %}
-        <a class="nav-link" href="{{ gamedev_url }}">Game Development Portfolio</a>
+        <a class="nav-link nav-link-cstm" href="{{ gamedev_url }}">Game Development Portfolio</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown08" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
@@ -54,6 +29,7 @@
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
       </li>
+
       <li class="nav-item">
         <span style="margin-left: 76px"></span>
       </li>
@@ -79,6 +55,32 @@
     </ul>
   </div>
 </nav>
+
+{% comment %}
+<a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
+<nav id="sidebar-wrapper">
+  <ul class="sidebar-nav">
+    <li class="sidebar-brand">
+      <a href="#page-top">Start Bootstrap</a>
+    </li>
+    <li class="sidebar-nav-item">
+      <a href="#page-top">Home</a>
+    </li>
+    <li class="sidebar-nav-item">
+      <a href="#about">About</a>
+    </li>
+    <li class="sidebar-nav-item">
+      <a href="#services">Services</a>
+    </li>
+    <li class="sidebar-nav-item">
+      <a href="#portfolio">Portfolio</a>
+    </li>
+    <li class="sidebar-nav-item">
+      <a href="#contact">Contact</a>
+    </li>
+  </ul>
+</nav>
+{% endcomment %}
 
 {% comment %}
 <nav>
@@ -127,3 +129,11 @@
   </span>
 </nav>
 {% endcomment %}
+
+<script>
+  document.querySelectorAll('.nav-link-cstm').forEach((link) => {
+    if (link.href === window.location.href) {
+      link.classList.add('active-cstm')
+    }
+  })
+</script>
