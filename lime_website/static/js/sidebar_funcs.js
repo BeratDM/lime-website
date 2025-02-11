@@ -117,3 +117,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
   sections.forEach((section) => observer.observe(section));
 });
+
+// Makes the sidebar stick to top - MIGHT NOT NEED IT AFTER USING "sticky-mb-top" from bootstrap
+// document.addEventListener("DOMContentLoaded", function () {
+//   const sidebar = document.getElementById("sidebar-nav");
+
+//   function adjustSidebarPosition() {
+//     const contentTop = document.getElementById("main-content").offsetTop;
+//     const scrollTop = window.scrollY;
+
+//     if (scrollTop > contentTop) {
+//       sidebar.style.top = "0px"; // Stick to top when scrolling
+//     } else {
+//       sidebar.style.top = `${contentTop - scrollTop}px`;
+//     }
+//   }
+
+//   window.addEventListener("scroll", adjustSidebarPosition);
+//   adjustSidebarPosition(); // Page load
+// });

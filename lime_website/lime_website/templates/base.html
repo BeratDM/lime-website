@@ -24,24 +24,27 @@
     <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.png' %}" />
   </head>
 
-  <body>
-    <header>
+  <body class="base-body">
+    <header class="header-cstm">
       <div class="text-center">
         <h1 class="justify-content-md-center">The Lime</h1>
       </div>
     </header>
     {% include 'navbar.html' %}
-    <main id="main">
-      {% block content %}
+    <main id="main" class="bg-dark base-main-container">
+      <div class="base-content-container">
+        {% block content %}
 
-      {% endblock %}
+        {% endblock %}
+      </div>
     </main>
 
     <!-- Scroll to Top Button -->
     <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
 
-    <footer>
+    <footer class="footer-cstm bg-dark">
       <p class="justify-content-md-center">Lime Site Footer</p>
+      <a href="https://www.example.com">example</a>
     </footer>
 
     <!-- Bootstrap core JS -->

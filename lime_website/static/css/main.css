@@ -49,7 +49,7 @@ body {
 
 .responsive-iframe-container {
   position: relative;
-  padding-bottom: 56.25%; /*(video height / video width) * 100% */
+  padding-bottom: 56.25%; /*(video height / video width) */
   height: 0;
   overflow: hidden;
 }
@@ -61,4 +61,72 @@ body {
   width: 100%;
   height: 100%;
   border: none; /* Important: Remove any default borders */
+}
+
+.bg-cstm {
+  background-color: blanchedalmond;
+}
+
+.header-cstm {
+  background-color: yellowgreen;
+  padding: 2px;
+}
+
+.base-content-container {
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+
+  /* background-color: var(--bs-body-bg); */
+  background-color: floralwhite;
+}
+
+.navbar-nav-scroll-cstm {
+  height: 100vh; /* Full viewport height */
+  overflow-y: auto; /* Enable scrolling */
+}
+/* width */
+.navbar-nav-scroll-cstm::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+.navbar-nav-scroll-cstm::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px silver;
+  border-radius: 2px;
+}
+
+/* Handle */
+.navbar-nav-scroll-cstm::-webkit-scrollbar-thumb {
+  background: rgba(70, 70, 70, 0.582);
+  border-radius: 2px;
+}
+
+.footer-cstm {
+  color: #fff;
+  text-align: center;
+  padding: 15px 10px;
+  font-size: 14px;
+  width: 100%;
+}
+
+.footer-cstm a {
+  color: #ddd;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.footer-cstm a:hover {
+  color: #fff;
+}
+
+.base-body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.base-main-container {
+  flex: 1;
 }

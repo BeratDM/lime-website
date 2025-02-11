@@ -131,8 +131,10 @@
 {% endcomment %}
 
 <script>
+  const currentURL = window.location.href.split('#')[0]
   document.querySelectorAll('.nav-link-cstm').forEach((link) => {
-    if (link.href === window.location.href) {
+    const linkURL = link.href.split('#')[0]
+    if (linkURL === currentURL) {
       link.classList.add('active-cstm')
     }
   })
