@@ -130,3 +130,12 @@ body {
 .base-main-container {
   flex: 1;
 }
+
+#bg-cstm1 {
+  background-image: url("../theme/assets/img/portfolio-2.jpg") !important;
+  background-size: cover;
+  background-position: center;
+  margin: -1rem;
+  padding: 1rem;
+  color: white;
+}
