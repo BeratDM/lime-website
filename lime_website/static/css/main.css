@@ -54,6 +54,10 @@
   height: 100%;
   border: none; /* Important: Remove any default borders */
 }
+.responsive-img {
+  max-width: 100%;
+  height: auto;
+}
 
 .header-cstm {
   background-color: yellowgreen;

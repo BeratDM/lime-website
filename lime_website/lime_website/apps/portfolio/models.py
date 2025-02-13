@@ -42,14 +42,14 @@ ALLOWED_ATTRIBUTES = {
         "frameborder",
         "allow",
         "referrerpolicy",
-        "sandbox",
     ],
 }
 
 ALLOWED_PROTOCOLS = ["http", "https", "data"]
 
 
-DEFAULT_SANDBOX = "allow-scripts allow-same-origin allow-popups"
+DEFAULT_IFRAME_SANDBOX = "allow-scripts allow-same-origin allow-popups"
+DEFAULT_IMG_CLASS = "responsive-img"
 
 
 def clean_html(html_content):
@@ -62,7 +62,14 @@ def clean_html(html_content):
     # Iterate over all <iframe> elements and enforce 'sandbox'
     for iframe in tree.findall(".//iframe"):
         if "sandbox" not in iframe.attrib:
-            iframe.attrib["sandbox"] = DEFAULT_SANDBOX  # Apply default sandbox policy
+            iframe.attrib["sandbox"] = (
+                DEFAULT_IFRAME_SANDBOX  # Apply default sandbox policy
+            )
+
+    for imgx in tree.findall(".//img"):
+        if "class" not in imgx.attrib:
+            imgx.attrib["class"] = DEFAULT_IMG_CLASS
+
     cleaned_html = lxml_html.tostring(tree, encoding="unicode", method="html")
 
     fixed_html = cleaned_html.replace("<div><div>", "<div>").replace(
