@@ -1,7 +1,3 @@
-body {
-  background-color: whitesmoke;
-}
-
 #sidebar-nav .nav-link.active:not(.collapsed) {
   /* border-left: 4px solid gold !important;
   background-color: rgba(212, 199, 126, 0.664) !important; */
@@ -28,10 +24,6 @@ body {
   /* color: rgb(115, 145, 77); */
   color: rgba(0, 0, 0, 0.74);
   font-size: small;
-}
-
-.portfolio-limits {
-  max-width: 1200px;
 }
 
 .nav-link-cstm.active-cstm {
@@ -63,28 +55,41 @@ body {
   border: none; /* Important: Remove any default borders */
 }
 
-.bg-cstm {
-  background-color: blanchedalmond;
-}
-
 .header-cstm {
   background-color: yellowgreen;
   padding: 2px;
+}
+
+.base-body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.base-main-container {
+  flex: 1;
 }
 
 .base-content-container {
   max-width: fit-content;
   margin-left: auto;
   margin-right: auto;
-  padding: 1rem;
 
   /* background-color: var(--bs-body-bg); */
-  background-color: floralwhite;
+  /* background-color: floralwhite; */
+}
+
+.portfolio-cstm {
+  max-width: 1200px;
+  color: black;
+  padding: 1rem;
+  background-color: floralwhite !important;
 }
 
 .navbar-nav-scroll-cstm {
   height: 100vh; /* Full viewport height */
   overflow-y: auto; /* Enable scrolling */
+  overflow-x: hidden;
 }
 /* width */
 .navbar-nav-scroll-cstm::-webkit-scrollbar {
@@ -119,16 +124,6 @@ body {
 
 .footer-cstm a:hover {
   color: #fff;
-}
-
-.base-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.base-main-container {
-  flex: 1;
 }
 
 #bg-cstm1 {
