@@ -3,3 +3,4 @@ psycopg2==2.9.9
 python-dotenv
 bleach
 lxml
+django-recaptcha

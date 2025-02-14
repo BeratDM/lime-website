@@ -31,6 +31,17 @@ SECRET_KEY = os.getenv(
     default="django-insecure-7d!**vc-bn0cz4#qp&rhw!1po(^+uqkp#gvrgz+h3e#3^2-rb3",
 )
 
+RECAPTCHA_PUBLIC_KEY = os.getenv(
+    "RECAPTCHA_PUBLIC_KEY",
+    default="",
+)
+
+RECAPTCHA_PRIVATE_KEY = os.getenv(
+    "RECAPTCHA_PRIVATE_KEY",
+    default="",
+)
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -48,6 +59,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "lime_website.apps.accounts",
     "lime_website.apps.portfolio",
+    "django_recaptcha",
 ]
 
 MIDDLEWARE = [
