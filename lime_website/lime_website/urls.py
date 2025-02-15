@@ -17,10 +17,12 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import redirect
 
 from . import views
 
 urlpatterns = [
+    path("admin/login/", lambda request: redirect("/accounts/login", permanent=False)),
     path("admin/", admin.site.urls),
     path("", include("lime_website.apps.public.urls")),
     path("accounts/", include("lime_website.apps.accounts.urls")),
