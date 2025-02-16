@@ -54,6 +54,7 @@
   height: 100%;
   border: none; /* Important: Remove any default borders */
 }
+
 .responsive-img {
   max-width: 100%;
   height: auto;
@@ -87,7 +88,8 @@
   max-width: 1200px;
   color: black;
   padding: 1rem;
-  background-color: floralwhite !important;
+  /* background-color: floralwhite !important; */
+  background-color: #eae6df !important;
 }
 
 .navbar-nav-scroll-cstm {
