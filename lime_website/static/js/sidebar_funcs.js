@@ -73,43 +73,42 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Sidebar active section logic
 document.addEventListener("DOMContentLoaded", function () {
-  var sections = document.querySelectorAll("main section");
-  var navLinks = document.querySelectorAll("#sidebar-nav .nav-link");
+  const sections = document.querySelectorAll("main section");
+  const navLinks = document.querySelectorAll("#sidebar-nav .nav-link");
 
-  // Detect parent-child relationships
+  // Track parent-child relationships
   let sectionHierarchy = {};
   sections.forEach((section) => {
-    let id = section.getAttribute("id");
-    let parentId = id.includes("-") ? id.split("-")[0] : null; // Extract parent part
+    let id = section.id;
+    let parentId = id.includes("-") ? id.split("-")[0] : null;
     if (parentId && document.getElementById(parentId)) {
-      sectionHierarchy[id] = parentId; // Map child to parent
+      sectionHierarchy[id] = parentId;
     }
   });
 
+  let activeParents = new Set();
   let observer = new IntersectionObserver(
     (entries) => {
       let activeSections = new Set();
 
       entries.forEach((entry) => {
+        let sectionId = entry.target.id;
         if (entry.isIntersecting) {
-          let sectionId = entry.target.getAttribute("id");
           activeSections.add(sectionId);
-
-          // If a child section is active, mark its parent as well
-          if (sectionHierarchy[sectionId]) {
-            activeSections.add(sectionHierarchy[sectionId]);
-          }
+          if (sectionHierarchy[sectionId])
+            activeParents.add(sectionHierarchy[sectionId]);
+        } else if (!sectionHierarchy[sectionId]) {
+          activeParents.delete(sectionId); // Remove parent only when it leaves
         }
       });
+
+      // Merge parents & active sections
+      activeSections = new Set([...activeSections, ...activeParents]);
 
       // Update sidebar links
       navLinks.forEach((link) => {
         let linkHref = link.getAttribute("href").substring(1);
-        if (activeSections.has(linkHref)) {
-          link.classList.add("active");
-        } else {
-          link.classList.remove("active");
-        }
+        link.classList.toggle("active", activeSections.has(linkHref));
       });
     },
     { rootMargin: "-10% 0px -90% 0px", threshold: 0 }
