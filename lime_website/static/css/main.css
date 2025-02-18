@@ -95,7 +95,7 @@
 
 .navbar-nav-scroll-cstm {
   height: 100vh; /* Full viewport height */
-  overflow-y: auto; /* Enable scrolling */
+  overflow-y: scroll; /* Enable scrolling */
   overflow-x: hidden;
 }
 /* width */
