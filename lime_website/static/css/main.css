@@ -133,10 +133,14 @@
 }
 
 #bg-cstm1 {
-  background-image: url("../theme/assets/img/portfolio-2.jpg") !important;
+  background-image: url("../assets/img/bg1-19x25.jpg") !important;
+  background-color: rgba(0, 0, 0, 0.6);
+  background-blend-mode: saturation;
   background-size: cover;
   background-position: center;
   margin: -1rem;
   padding: 1rem;
   color: white;
+  min-height: calc(100vh - 200px);
+  width: 100vw;
 }
