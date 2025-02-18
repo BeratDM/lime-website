@@ -14,9 +14,12 @@
   /* color: rgb(115, 145, 77); */
 
   color: rgba(0, 0, 0, 0.74);
-  border-left: 4px solid silver !important;
 
-  background-color: rgba(223, 223, 223, 0.315) !important;
+  /* border-left: 4px solid silver !important; */
+  border-left: 4px solid rgba(206, 141, 141) !important;
+
+  /* background-color: rgba(223, 223, 223, 0.315) !important; */
+  background-color: rgba(248, 248, 248, 0.5) !important;
 }
 
 .nav-child1 {

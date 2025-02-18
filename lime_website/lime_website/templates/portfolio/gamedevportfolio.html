@@ -21,14 +21,22 @@
           <ul class="nav flex-column">
             <a class="navbar-brand d-sm-none d-md-block" href="#">Contents</a>
             {% for section in sections %}
-              <li class="nav-item">
-                <a class="nav-link nav-parent" href="#{{ section.slug }}">{{ section.title }}</a>
-              </li>
-              {% for content in section.contents.all %}
+              <div class="pb-1">
                 <li class="nav-item">
-                  <a class="nav-link ml-3 my-1 nav-child1" href="#{{ section.slug }}-{{ content.slug }}">{{ content.title }}</a>
+                  <a class="nav-link nav-parent" href="#{{ section.slug }}">
+                    {% comment %}style="background-image: url('../static/assets/gamedev/images/image4.jpg');"{% endcomment %}
+                    {% comment %} <div style="margin-left: -1rem; margin-right: -1rem; margin-top: -0.5rem;">
+                      <img src="../static/assets/gamedev/images/image9.jpg" class="responsive-img" />
+                    </div> {% endcomment %}
+                    <div>{{ section.title }}</div>
+                  </a>
                 </li>
-              {% endfor %}
+                {% for content in section.contents.all %}
+                  <li class="nav-item">
+                    <a class="nav-link ml-3 my-1 nav-child1" href="#{{ section.slug }}-{{ content.slug }}">{{ content.title }}</a>
+                  </li>
+                {% endfor %}
+              </div>
             {% endfor %}
           </ul>
         </div>
