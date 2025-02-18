@@ -35,15 +35,16 @@
       </nav>
 
       <!-- Main Content -->
-      <main id="main-content" class="col-md-9 ms-sm-auto col-lg-10 px-md-3 portfolio-content-div">
+      <main id="main-content" class="col-md-9 ms-sm-auto col-lg-10 px-md-3 portfolio-content-style">
         {% for section in sections|dictsort:'order' %}
+          <span><img src="../static/assets/gamedev/images/image15.png" class="responsive-img" /></span>
           <section id="{{ section.slug }}">
-            <h2>{{ section.title }}</h2>
+            <h1>{{ section.title }}</h1>
             <p>{{ section.description|safe }}</p>
 
             {% for content in section.contents.all|dictsort:'order' %}
               <section id="{{ section.slug }}-{{ content.slug }}">
-                <h4>{{ content.title }}</h4>
+                <h3>{{ content.title }}</h3>
                 <div style="word-wrap: break-word">{{ content.text|safe }}</div>
               </section>
             {% endfor %}

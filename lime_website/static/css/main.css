@@ -152,3 +152,10 @@
     max-width: 3024px;
   }
 }
+
+.portfolio-content-style h1,
+.portfolio-content-style h2,
+.portfolio-content-style h3,
+.portfolio-content-style h4 {
+  font-weight: 400 !important;
+}
