@@ -76,10 +76,11 @@
 }
 
 .base-content-container {
-  max-width: fit-content;
+  /* max-width: fit-content; */
   margin-left: auto;
   margin-right: auto;
 
+  height: 100%;
   /* background-color: var(--bs-body-bg); */
   /* background-color: floralwhite; */
 }
@@ -138,9 +139,16 @@
   background-blend-mode: saturation;
   background-size: cover;
   background-position: center;
-  margin: -1rem;
-  padding: 1rem;
+  /* margin: -1rem; */
+  /* padding: 1rem; */
   color: white;
-  min-height: calc(100vh - 200px);
-  width: 100vw;
+  min-height: 100%;
+  width: 100%;
+}
+
+@media (min-width: 1950px) {
+  #bg-cstm1 {
+    background-image: url("../assets/img/bg1-30x40.jpg") !important;
+    max-width: 3024px;
+  }
 }

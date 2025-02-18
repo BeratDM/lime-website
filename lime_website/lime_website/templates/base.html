@@ -1,55 +1,59 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>
-      {% block title %}
-        - The Lime Site
-      {% endblock %}
-    </title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <!-- Font Awesome icons (free version) -->
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <!-- Simple line icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet" />
-    <!-- Google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
-    <!-- Core theme CSS (includes Bootstrap) -->
-    <link href="{% static 'theme/css/styles.css' %}" rel="stylesheet" />
-    <link href="{% static 'css/main.css' %}" rel="stylesheet" />
-    <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.png' %}" />
-  </head>
+{% with SITE_TITLE='Berat Uluturk' LINK_GITHUB='XX' LINK_LINKEDIN='XX' %}
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <title>
+        {% block title %}
 
-  <body class="base-body">
-    <header class="header-cstm">
-      <div class="text-center">
-        <h1 class="justify-content-md-center">The Lime</h1>
-      </div>
-    </header>
-    {% include 'navbar.html' %}
-    <main id="main" class="bg-dark text-bg-dark base-main-container">
-      <div class="base-content-container">
-        {% block content %}
+        {% endblock %}- {{ SITE_TITLE }}
+      </title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+      <meta name="description" content="" />
+      <meta name="author" content="" />
+      <!-- Font Awesome icons (free version) -->
+      <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+      <!-- Simple line icons -->
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.5.5/css/simple-line-icons.min.css" rel="stylesheet" />
+      <!-- Google fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+      <!-- Core theme CSS (includes Bootstrap) -->
+      <link href="{% static 'theme/css/styles.css' %}" rel="stylesheet" />
+      <link href="{% static 'css/main.css' %}" rel="stylesheet" />
+      <link rel="shortcut icon" type="image/png" href="{% static 'assets/favicon.png' %}" />
+    </head>
 
-        {% endblock %}
-      </div>
-    </main>
+    <body class="base-body">
+      <header class="header-cstm">
+        <div class="text-center">
+          <h1 class="justify-content-md-center"></h1>
+        </div>
+      </header>
+      {% include 'navbar.html' %}
+      <main id="main" class="bg-dark text-bg-dark base-main-container">
+        <div class="base-content-container">
+          {% block content %}
 
-    <!-- Scroll to Top Button -->
-    <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
+          {% endblock %}
+        </div>
+      </main>
 
-    <footer class="footer-cstm bg-dark">
-      <p class="justify-content-md-center">Lime Site Footer</p>
-      <a href="https://www.example.com">example</a>
-    </footer>
+      <!-- Scroll to Top Button -->
+      <a class="scroll-to-top rounded" href="#page-top"><i class="fas fa-angle-up"></i></a>
 
-    <!-- Bootstrap core JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS -->
-    <script src="{% static 'theme/js/scripts.js' %}"></script>
-  </body>
-</html>
+      <footer class="footer-cstm bg-dark">
+        <p class="justify-content-md-center">
+          Built with <i>django</i>
+        </p>
+        <a href="https://github.com/BeratDM/lime-website">GitHub</a>
+      </footer>
+
+      <!-- Bootstrap core JS -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+      <!-- Core theme JS -->
+      <script src="{% static 'theme/js/scripts.js' %}"></script>
+    </body>
+  </html>
+{% endwith %}
