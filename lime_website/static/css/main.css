@@ -27,6 +27,8 @@
   /* color: rgb(115, 145, 77); */
   color: rgba(0, 0, 0, 0.74);
   font-size: small;
+
+  border-left: 2px solid silver !important;
 }
 
 .nav-link-cstm.active-cstm {
