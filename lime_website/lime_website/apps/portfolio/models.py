@@ -26,11 +26,13 @@ ALLOWED_TAGS = [
     "span",
     "div",
     "iframe",
+    "video",
+    "source",
 ]
 
 ALLOWED_ATTRIBUTES = {
     "a": ["href", "target", "rel"],
-    "img": ["src", "alt"],
+    "img": ["src", "alt", "width", "height"],
     "code": ["class"],
     "span": ["class"],
     "div": ["class"],
@@ -43,6 +45,23 @@ ALLOWED_ATTRIBUTES = {
         "allow",
         "referrerpolicy",
     ],
+    "blockquote": [
+        "class",
+        "data-id",
+        "lang",
+        "data-context",
+    ],
+    "video": [
+        "preload",
+        "loop",
+        "playsinline ",
+        "muted",
+        "autoplay",
+    ],
+    "source": [
+        "src",
+        "type",
+    ],
 }
 
 ALLOWED_PROTOCOLS = ["http", "https", "data"]
@@ -50,6 +69,7 @@ ALLOWED_PROTOCOLS = ["http", "https", "data"]
 
 DEFAULT_IFRAME_SANDBOX = "allow-scripts allow-same-origin allow-popups"
 DEFAULT_IMG_CLASS = "responsive-img"
+DEFAULT_VIDEO_AUTOPLAY = "autoplay"
 
 
 def clean_html(html_content):
