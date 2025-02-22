@@ -24,6 +24,17 @@
   background-color: rgba(193, 219, 159, 0.61) !important;
 }
 
+.fixed-top-button {
+  position: fixed;
+  top: 0.7rem;
+  left: 60px;
+  width: calc(100% - 120px);
+  z-index: 1044;
+  background-color: white;
+  padding: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 .nav-parent {
   /* color: rgb(145, 111, 27); */
   /* color: rgb(115, 145, 77); */
@@ -152,7 +163,9 @@
   /* background-color: floralwhite !important; */
   --cstm-portfolio-bg: #eae6df !important;
   /* background-color: #fbf8f2 !important; */
-  --cstm-portfolio-text-title: rgb(65, 45, 45) !important;
+  /* --cstm-portfolio-text-title: rgb(110, 48, 48) !important; */
+  /* --cstm-portfolio-text-title: rgb(3, 165, 11) !important; */
+  --cstm-portfolio-text-title: rgb(3, 68, 165) !important;
 }
 
 .portfolio-cstm-dark {
