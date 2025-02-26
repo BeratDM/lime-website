@@ -24,11 +24,12 @@
   background-color: rgba(193, 219, 159, 0.61) !important;
 }
 
-.fixed-top-button {
+.cstm-fixed-top-button {
   position: fixed;
-  top: 0.7rem;
-  left: 60px;
-  width: calc(100% - 120px);
+  /* top: 0.7rem;  */
+  bottom: 0.5rem;
+  left: 80px;
+  width: calc(100% - 160px);
   z-index: 1044;
   background-color: white;
   padding: 0.5rem;
@@ -252,4 +253,37 @@
   .cstm-fs-1 {
     font-size: 5.5rem !important;
   }
+}
+
+img.cstm-icon1 {
+  filter: invert(1); /* Make icon white from black */
+  transition: filter 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* 🟡 Hover Effect */
+img.cstm-icon1:hover {
+  filter: invert(1) drop-shadow(0px 0px 0.75rem rgba(255, 0, 0, 0.7));
+  transform: scale(1.2);
+  opacity: 0.9;
+}
+
+img.cstm-icon1:active {
+  transform: scale(0.95);
+  opacity: 0.7;
+}
+
+img.cstm-icon1-1:hover {
+  filter: invert(1) drop-shadow(0px 0px 0.75rem rgba(255, 0, 0, 0.7));
+}
+
+img.cstm-icon1-2:hover {
+  filter: invert(1) drop-shadow(0px 0px 0.75rem rgba(0, 195, 255, 0.7));
+}
+
+img.cstm-icon1-3:hover {
+  filter: invert(1) drop-shadow(0px 0px 0.75rem rgba(102, 255, 0, 0.7));
+}
+
+img.cstm-icon1-4:hover {
+  filter: invert(1) drop-shadow(0px 0px 0.75rem rgba(255, 0, 144, 0.7));
 }
