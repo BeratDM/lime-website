@@ -1,10 +1,10 @@
 {% url 'public:index' as index_url %}
 {% url 'public:about' as about_url %}
 {% url 'public:contact' as contact_url %}
-{% url 'portfolio:gamedev' as gamedev_url %}
+{% comment %} {% url 'portfolio:gamedev' as gamedev_url %} {% endcomment %}
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark main-nav font-nunito">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark main-nav">
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
   <div class="collapse navbar-collapse justify-content-md-center" id="navbarsExample08">
@@ -12,15 +12,27 @@
       <li class="nav-item">
         <a class="nav-link nav-link-cstm font-tangerine fs-5" style="margin-bottom: -1rem; margin-top: -0.1rem; padding-right: 76px;" href="{{ index_url }}">Berat Ulutürk</a>
       </li>
+
+      {% for portfolio in portfolios %}
+        <li class="nav-item">
+          <a class="nav-link nav-link-cstm" href="{% url 'portfolio:portfolio_detail' portfolio_slug=portfolio.slug %}">{{ portfolio.title }}</a>
+        </li>
+      {% endfor %}
+
       {% comment %} <li class="nav-item">
         <a class="nav-link nav-link-cstm" href="{{ about_url }}">About</a>
       </li>
       <li class="nav-item">
         <a class="nav-link nav-link-cstm" href="{{ contact_url }}">Contact</a>
-      </li> {% endcomment %}
+      </li>
       <li class="nav-item">
         <a class="nav-link nav-link-cstm" href="{{ gamedev_url }}">Game Development Portfolio</a>
+      </li> {% endcomment %}
+
+      <li class="nav-item">
+        <span style="margin-left: 76px"></span>
       </li>
+
       {% comment %} <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown08" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
         <div class="dropdown-menu" aria-labelledby="dropdown08">
@@ -29,10 +41,6 @@
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
       </li> {% endcomment %}
-
-      <li class="nav-item">
-        <span style="margin-left: 76px"></span>
-      </li>
 
       {% if user.is_authenticated %}
         {% url 'accounts:profile' as profile_url %}
@@ -55,80 +63,6 @@
     </ul>
   </div>
 </nav>
-
-{% comment %}
-<a class="menu-toggle rounded" href="#"><i class="fas fa-bars"></i></a>
-<nav id="sidebar-wrapper">
-  <ul class="sidebar-nav">
-    <li class="sidebar-brand">
-      <a href="#page-top">Start Bootstrap</a>
-    </li>
-    <li class="sidebar-nav-item">
-      <a href="#page-top">Home</a>
-    </li>
-    <li class="sidebar-nav-item">
-      <a href="#about">About</a>
-    </li>
-    <li class="sidebar-nav-item">
-      <a href="#services">Services</a>
-    </li>
-    <li class="sidebar-nav-item">
-      <a href="#portfolio">Portfolio</a>
-    </li>
-    <li class="sidebar-nav-item">
-      <a href="#contact">Contact</a>
-    </li>
-  </ul>
-</nav>
-{% endcomment %}
-
-{% comment %}
-<nav>
-  {% url 'public:index' as index_url %}
-  <span>
-    {% if request.path == index_url %}
-      Home
-    {% else %}
-      <a href="{{ index_url }}">Home</a>
-    {% endif %}
-  </span>
-
-  {% url 'public:about' as about_url %}
-  <span>
-    {% if request.path == about_url %}
-      About
-    {% else %}
-      <a href="{{ about_url }}">About</a>
-    {% endif %}
-  </span>
-
-  {% url 'public:contact' as contact_url %}
-  <span>
-    {% if request.path == contact_url %}
-      Contact
-    {% else %}
-      <a href="{{ contact_url }}">Contact</a>
-    {% endif %}
-  </span>
-
-  <span style="float: right">
-    {% if user.is_authenticated %}
-      {% url 'accounts:profile' as profile_url %}
-      <span>
-        Welcome Back!{% if request.path == profile_url %}
-          {{ user.username }}
-        {% else %}
-          <a href="{{ profile_url }}">{{ user.username }}</a>
-        {% endif %}
-      </span>
-
-      <span><a href="{% url 'accounts:logout' %}">Logout</a></span>
-    {% else %}
-      <span><a href="{% url 'accounts:login' %}">Login</a></span>
-    {% endif %}
-  </span>
-</nav>
-{% endcomment %}
 
 <script>
   const currentURL = window.location.href.split('#')[0]

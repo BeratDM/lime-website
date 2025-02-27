@@ -29,7 +29,6 @@ ALLOWED_TAGS = [
     "video",
     "source",
 ]
-
 ALLOWED_ATTRIBUTES = {
     "a": ["href", "target", "rel"],
     "img": ["src", "alt", "width", "height"],
@@ -45,27 +44,11 @@ ALLOWED_ATTRIBUTES = {
         "allow",
         "referrerpolicy",
     ],
-    "blockquote": [
-        "class",
-        "data-id",
-        "lang",
-        "data-context",
-    ],
-    "video": [
-        "preload",
-        "loop",
-        "playsinline ",
-        "muted",
-        "autoplay",
-    ],
-    "source": [
-        "src",
-        "type",
-    ],
+    "blockquote": ["class", "data-id", "lang", "data-context"],
+    "video": ["preload", "loop", "playsinline ", "muted", "autoplay"],
+    "source": ["src", "type"],
 }
-
 ALLOWED_PROTOCOLS = ["http", "https", "data"]
-
 
 DEFAULT_IFRAME_SANDBOX = "allow-scripts allow-same-origin allow-popups"
 DEFAULT_IMG_CLASS = "responsive-img"
@@ -79,31 +62,52 @@ def clean_html(html_content):
     cleaned_html = html.unescape(cleaned_html)
     tree = lxml_html.fromstring(f"<div>{cleaned_html}</div>")
 
-    # Iterate over all <iframe> elements and enforce 'sandbox'
     for iframe in tree.findall(".//iframe"):
         if "sandbox" not in iframe.attrib:
-            iframe.attrib["sandbox"] = (
-                DEFAULT_IFRAME_SANDBOX  # Apply default sandbox policy
-            )
+            iframe.attrib["sandbox"] = DEFAULT_IFRAME_SANDBOX
 
-    for imgx in tree.findall(".//img"):
-        if "class" not in imgx.attrib:
-            imgx.attrib["class"] = DEFAULT_IMG_CLASS
+    for img in tree.findall(".//img"):
+        if "class" not in img.attrib:
+            img.attrib["class"] = DEFAULT_IMG_CLASS
 
     cleaned_html = lxml_html.tostring(tree, encoding="unicode", method="html")
-
     fixed_html = cleaned_html.replace("<div><div>", "<div>").replace(
         "</div></div>", "</div>"
     )
-
     return fixed_html
 
 
-class Section(models.Model):
+class Portfolio(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True)
     description = models.TextField(blank=True, null=True)
+    order = models.PositiveIntegerField(default=0)
 
+    class Meta:
+        ordering = ["order"]
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        if self.description:
+            self.description = clean_html(self.description)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.title
+
+
+class Section(models.Model):
+    portfolio = models.ForeignKey(
+        Portfolio,
+        on_delete=models.CASCADE,
+        related_name="sections",
+        null=True,
+        blank=True,  # Allows the field to be optional in Django forms and the admin interface.
+    )
+    title = models.CharField(max_length=255)
+    slug = models.SlugField(unique=True)
+    description = models.TextField(blank=True, null=True)
     order = models.PositiveIntegerField(default=0)
 
     class Meta:
