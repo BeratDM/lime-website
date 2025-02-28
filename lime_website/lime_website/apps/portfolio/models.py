@@ -51,7 +51,7 @@ ALLOWED_ATTRIBUTES = {
 ALLOWED_PROTOCOLS = ["http", "https", "data"]
 
 DEFAULT_IFRAME_SANDBOX = "allow-scripts allow-same-origin allow-popups"
-DEFAULT_IMG_CLASS = "responsive-img"
+DEFAULT_IMG_CLASS = "responsive-img cstm-border1"
 DEFAULT_VIDEO_AUTOPLAY = "autoplay"
 
 
