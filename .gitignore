@@ -6,3 +6,4 @@ setup.cfg
 .env
 .vscode
 lime_website/static/assets/gamedev/images
+lime_website/static/theme

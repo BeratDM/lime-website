@@ -113,22 +113,26 @@
 
 .base-main-container {
   flex: 1;
-
   background-color: rgba(var(--bs-dark-rgb), 1) !important;
   /* background-color: #001f44 !important; */
-
   /* background-color: #333332 !important; */
+
+  position: relative;
 }
 
 .base-content-container {
   /* max-width: fit-content; */
   margin-left: auto;
   margin-right: auto;
-
   height: 100%;
+  width: 100%;
   /* background-color: var(--bs-body-bg); */
   /* background-color: floralwhite; */
   justify-items: center;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
 }
 
 .portfolio-cstm {
@@ -228,6 +232,7 @@
   /* padding: 1rem; */
   color: white;
   min-height: 100%;
+
   width: 100%;
 }
 

@@ -34,7 +34,7 @@ ALLOWED_ATTRIBUTES = {
     "img": ["src", "alt", "width", "height"],
     "code": ["class"],
     "span": ["class"],
-    "div": ["class"],
+    "div": ["class", "data-repo"],
     "iframe": [
         "src",
         "width",
