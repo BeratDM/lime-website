@@ -289,5 +289,19 @@ img.cstm-icon1-4:hover {
 }
 
 .cstm-border1 {
-  border: 1px solid silver;
+  /* border: 1px solid silver; */
+  filter: drop-shadow(0px 0px 0.25rem rgba(141, 99, 60, 0.7));
+}
+
+.repo-card {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 5px;
+  /* border: 1px solid cornflowerblue; */
+  /* border: 1px solid rgb(65, 45, 45); */
+  /* border: 1px solid silver; */
+  /* border: 1px solid rgba(248, 248, 248, 0.5); */
+  /* border-radius: 7px; */
+  filter: drop-shadow(0px 0px 0.25rem rgba(109, 91, 75, 0.7));
 }
