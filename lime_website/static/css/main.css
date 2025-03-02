@@ -298,9 +298,11 @@ img.cstm-icon1-4:hover {
 }
 
 .cstm-border1 {
+  border: red;
   /* border: 1px solid silver; */
   /* filter: drop-shadow(0px 0px 0.25rem rgba(141, 99, 60, 0.7)); */
   /* filter: drop-shadow(0px 0px 0.25rem rgba(78, 78, 78, 0.8)); */
+  /* filter: drop-shadow(0px 0px 1px rgba(78, 78, 78, 0.2)); */
 }
 
 .repo-card {
@@ -340,6 +342,13 @@ img.cstm-icon1-4:hover {
 
 @media (min-width: 768px) {
   .cstm-mx-md-6 {
+    margin-right: 5rem !important;
+    margin-left: 5rem !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .cstm-mx-lg-6 {
     margin-right: 7rem !important;
     margin-left: 7rem !important;
   }

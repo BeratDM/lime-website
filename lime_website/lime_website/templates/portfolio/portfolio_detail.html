@@ -51,7 +51,7 @@
           <section id="{{ section.slug }}">
             {% comment %} <span><img src="../static/assets/portfolio/before_header.png" class="responsive-img" /></span> {% endcomment %}
             <h1 class="portfolio-cstm-headerborder">{{ section.title }}</h1>
-            <div class="cstm-mx-md-6">
+            <div class="cstm-mx-md-6 cstm-mx-lg-6">
               <p>{{ section.description|safe }}</p>
 
               {% for content in section.contents.all|dictsort:'order' %}
