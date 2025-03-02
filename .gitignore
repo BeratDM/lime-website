@@ -7,3 +7,4 @@ setup.cfg
 .vscode
 lime_website/static/assets/gamedev/images
 lime_website/static/theme
+lime_website/lime_website/templates/temporary

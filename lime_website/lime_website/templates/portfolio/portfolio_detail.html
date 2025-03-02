@@ -45,20 +45,23 @@
       <!-- Main Content -->
       <main id="main-content" class="col-md-9 ms-sm-auto col-lg-10 px-md-3 portfolio-content-style">
         <div class="text-center font-tangerine">
-          <h1>{{ portfolio.title }}</h1>
+          <h1 class="py-2">{{ portfolio.title }}</h1>
         </div>
         {% for section in sections|dictsort:'order' %}
           <section id="{{ section.slug }}">
-            <span><img src="../static/assets/portfolio/before_header.png" class="responsive-img" /></span>
-            <h1>{{ section.title }}</h1>
-            <p>{{ section.description|safe }}</p>
+            {% comment %} <span><img src="../static/assets/portfolio/before_header.png" class="responsive-img" /></span> {% endcomment %}
+            <h1 class="portfolio-cstm-headerborder">{{ section.title }}</h1>
+            <div class="cstm-mx-md-6">
+              <p>{{ section.description|safe }}</p>
 
-            {% for content in section.contents.all|dictsort:'order' %}
-              <section id="{{ section.slug }}-{{ content.slug }}">
-                <h3>{{ content.title }}</h3>
-                <div style="word-wrap: break-word">{{ content.text|safe }}</div>
-              </section>
-            {% endfor %}
+              {% for content in section.contents.all|dictsort:'order' %}
+                <section id="{{ section.slug }}-{{ content.slug }}">
+                  <h3>{{ content.title }}</h3>
+                  <div style="word-wrap: break-word">{{ content.text|safe }}</div>
+                </section>
+              {% endfor %}
+            </div>
+            <br />
           </section>
         {% endfor %}
       </main>
