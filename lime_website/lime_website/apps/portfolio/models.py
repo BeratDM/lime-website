@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 import bleach
+from bleach.css_sanitizer import CSSSanitizer
 from lxml import html as lxml_html
 import html
 
@@ -33,7 +34,7 @@ ALLOWED_ATTRIBUTES = {
     "a": ["href", "target", "rel"],
     "img": ["src", "alt", "width", "height"],
     "code": ["class"],
-    "span": ["class"],
+    "span": ["class", "style"],
     "div": ["class", "data-repo"],
     "iframe": [
         "src",
@@ -48,6 +49,15 @@ ALLOWED_ATTRIBUTES = {
     "video": ["preload", "loop", "playsinline ", "muted", "autoplay"],
     "source": ["src", "type"],
 }
+ALLOWED_STYLES = [
+    "padding",
+    "padding-top",
+    "margin",
+    "margin-top",
+    "height",
+    "line-height",
+    "display",
+]
 ALLOWED_PROTOCOLS = ["http", "https", "data"]
 
 DEFAULT_IFRAME_SANDBOX = "allow-scripts allow-same-origin allow-popups"
@@ -56,8 +66,13 @@ DEFAULT_VIDEO_AUTOPLAY = "autoplay"
 
 
 def clean_html(html_content):
+    css_sanitizer = CSSSanitizer(allowed_css_properties=ALLOWED_STYLES)
     cleaned_html = bleach.clean(
-        html_content, tags=ALLOWED_TAGS, attributes=ALLOWED_ATTRIBUTES, strip=True
+        html_content,
+        tags=ALLOWED_TAGS,
+        attributes=ALLOWED_ATTRIBUTES,
+        strip=True,
+        css_sanitizer=css_sanitizer,
     )
     cleaned_html = html.unescape(cleaned_html)
     tree = lxml_html.fromstring(f"<div>{cleaned_html}</div>")

@@ -165,6 +165,17 @@
   padding: 10px;
 }
 
+.portfolio-cstm-smallheaderborder {
+  /* text-align: center; */
+  /* border-top: 10px solid rgb(87, 186, 134); */
+
+  /* border-top: 2px solid #363636; */
+  border-top: 2px solid #363636;
+  margin-top: 50px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 .portfolio-cstm-light {
   /* color: black; */
   /* color: #2d4773; */

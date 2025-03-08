@@ -50,13 +50,13 @@
         {% for section in sections|dictsort:'order' %}
           <section id="{{ section.slug }}">
             {% comment %} <span><img src="../static/assets/portfolio/before_header.png" class="responsive-img" /></span> {% endcomment %}
-            <h1 class="portfolio-cstm-headerborder">{{ section.title }}</h1>
+            <h1 class="portfolio-cstm-headerborder mb-5">{{ section.title }}</h1>
             <div class="cstm-mx-md-6 cstm-mx-lg-6">
               <p>{{ section.description|safe }}</p>
 
               {% for content in section.contents.all|dictsort:'order' %}
                 <section id="{{ section.slug }}-{{ content.slug }}">
-                  <h3>{{ content.title }}</h3>
+                  <h3 class="portfolio-cstm-smallheaderborder">{{ content.title }}</h3>
                   <div style="word-wrap: break-word">{{ content.text|safe }}</div>
                 </section>
               {% endfor %}

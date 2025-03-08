@@ -4,3 +4,4 @@ python-dotenv
 bleach
 lxml
 django-recaptcha
+tinycss2
