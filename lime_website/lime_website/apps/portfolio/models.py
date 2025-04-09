@@ -53,10 +53,6 @@ ALLOWED_STYLES = [
     "padding",
     "padding-top",
     "margin",
-    "margin-top",
-    "height",
-    "line-height",
-    "display",
 ]
 ALLOWED_PROTOCOLS = ["http", "https", "data"]
 
