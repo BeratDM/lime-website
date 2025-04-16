@@ -5,28 +5,33 @@
 {% endblock %}
 
 {% block content %}
-  <h2>Contact</h2>
-  <p>This is some content for the page.</p>
+  <div>
+    {% if contact_success %}
+      <div class="alers alert-success" role="alert">Message Sent!</div>
+    {% endif %}
+    <h2>Contact</h2>
+    <form method="post">
+      {% csrf_token %}
 
-  <section class="bulma-section">
-    <div class="bulma-column">1</div>
-    <div class="bulma-column">2</div>
-    <div class="bulma-column">3</div>
-    <div class="bulma-column">4</div>
-    <div class="bulma-column">5</div>
-  </section>
-  <div class="grid">
-    <div class="cell">
-      <article class="box">
-        <p class="title">Hello World</p>
-        <p class="subtitle">What is up?</p>
-      </article>
-    </div>
-    <div class="cell">
-      <article class="box">
-        <p class="title">Foo</p>
-        <p class="subtitle">Bar</p>
-      </article>
-    </div>
+      {% if form.non_field_errors %}
+        <div class="alers alert-danger" role="alert">{{ form.non_field_errors }}</div>
+      {% endif %}
+
+      {% for field in form %}
+        <div class="form-group">
+          <div>
+            {{ field.label_tag }}
+            {{ field }}
+            {% for error in field.errors %}
+              <p class="help-block text-danger">{{ error }}</p>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+      <br />
+      <div class="form-group">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
   </div>
 {% endblock %}

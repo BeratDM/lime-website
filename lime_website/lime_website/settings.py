@@ -41,6 +41,14 @@ RECAPTCHA_PRIVATE_KEY = os.getenv(
     default="",
 )
 
+DEFAULT_FROM_EMAIL = os.getenv(
+    "DEFAULT_FROM_EMAIL",
+    default="",
+)
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -59,6 +67,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "lime_website.apps.accounts",
     "lime_website.apps.portfolio",
+    "lime_website.apps.contact",
     "django_recaptcha",
 ]
 

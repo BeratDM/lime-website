@@ -1,6 +1,6 @@
 {% url 'public:index' as index_url %}
 {% url 'public:about' as about_url %}
-{% url 'public:contact' as contact_url %}
+{% url 'contact:contact' as contact_url %}
 {% comment %} {% url 'portfolio:gamedev' as gamedev_url %} {% endcomment %}
 
 <!-- Navigation -->
@@ -23,14 +23,15 @@
         <a class="nav-link nav-link-cstm" href="{{ about_url }}">About</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link nav-link-cstm" href="{{ contact_url }}">Contact</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link nav-link-cstm" href="{{ gamedev_url }}">Game Development Portfolio</a>
       </li> {% endcomment %}
 
       <li class="nav-item">
         <span style="margin-left: 76px"></span>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link nav-link-cstm" href="{{ contact_url }}">Contact</a>
       </li>
 
       {% comment %} <li class="nav-item dropdown">
