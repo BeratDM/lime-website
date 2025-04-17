@@ -41,14 +41,37 @@ RECAPTCHA_PRIVATE_KEY = os.getenv(
     default="",
 )
 
-DEFAULT_FROM_EMAIL = os.getenv(
-    "DEFAULT_FROM_EMAIL",
+# EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+DEFAULT_EMAIL_FROM = os.getenv(
+    "DEFAULT_EMAIL_FROM",
+    default="x",
+)
+DEFAULT_EMAIL_TO = os.getenv(
+    "DEFAULT_EMAIL_TO",
+    default="y",
+)
+EMAIL_HOST = os.getenv(
+    "EMAIL_HOST",
     default="",
 )
-
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-
+EMAIL_HOST_USER = os.getenv(
+    "EMAIL_HOST_USER",
+    default="",
+)
+EMAIL_HOST_PASSWORD = os.getenv(
+    "EMAIL_HOST_PASSWORD",
+    default="",
+)
+EMAIL_PORT = os.getenv(
+    "EMAIL_PORT",
+    default="",
+)
+EMAIL_USE_TLS = os.getenv(
+    "EMAIL_USE_TLS",
+    default="False",
+).lower() in ("true", "1", "t")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
