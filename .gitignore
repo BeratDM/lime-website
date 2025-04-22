@@ -1,5 +1,7 @@
 venv
 .venv
+helm
+.helm
 __pycache__
 db.sqlite3
 .mypy_cache
